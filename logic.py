@@ -9,8 +9,8 @@ class Logic(QMainWindow, Ui_MainWindow):
         super().__init__()
         self.setupUi(self)
 
-        self.pushButton.clicked.connect(self.getFileName)
-        self.pushButton_3.clicked.connect(self.compress)
+        self.select_push.clicked.connect(self.getFileName)
+        self.compress_push.clicked.connect(self.compress)
 
         self.filename = ''
 
@@ -28,3 +28,5 @@ class Logic(QMainWindow, Ui_MainWindow):
 
     def compress(self):
         image = Image.open(str(self.filename))
+        width, height = image.size
+        new_size =
