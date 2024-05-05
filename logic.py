@@ -1,7 +1,8 @@
 from PyQt6.QtWidgets import (QApplication, QMainWindow, QWidget, QTextEdit, QFileDialog)
-from video_gui import *
+from extended import *
 import os
 from PIL import Image
+
 
 class Logic(QMainWindow, Ui_MainWindow):
     def __init__(self):
@@ -26,4 +27,4 @@ class Logic(QMainWindow, Ui_MainWindow):
         print(self.filename)
 
     def compress(self):
-     image = Image.open(self.filename)
+        image = Image.open(str(self.filename))
