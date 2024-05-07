@@ -15,18 +15,21 @@ class Logic(QMainWindow, Ui_MainWindow):
         self.filename = ''
 
     def getFileName(self):
-        file_filter = 'Image File (*.jpg, *.png)'
+        file_filter = 'Image File (*.jpg, *.png);; Video File (*.mp4);; Audio File (*.mp3)'
         response = QFileDialog.getOpenFileName(
             parent=self,
             caption='Select a file',
             directory=os.getcwd(),
             filter=file_filter,
-            initialFilter='Image File (*.jpg, *.png)'
         )
-        self.filename = str(response)
+        self.filename = str(response).split(',')
         print(self.filename)
+        file_type = self.filename[0][-4:-1]
+        print(file_type)
 
     def compress(self):
+        file_type = self.filename[-1][-3:]
+
         image = Image.open(str(self.filename))
         width, height = image.size
-        new_size =
+        new_size = 0
