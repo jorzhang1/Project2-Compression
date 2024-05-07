@@ -7,12 +7,6 @@ import os
 from PIL import Image
 
 
-class MainWindow(QDialog):
-    def __init__(self):
-        super(StartWindow, self).__init__()
-        loadUi("media main.ui", self)
-
-
 class Logic(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super().__init__()

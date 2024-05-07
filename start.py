@@ -8,12 +8,12 @@
 
 from PyQt6 import QtCore, QtGui, QtWidgets
 from extended import *
+from logic import *
+
 
 class Ui_StartWindow(object):
     def openWindow(self):
-        self.window = QtWidgets.QMainWindow()
-        self.ui = Ui_MainWindow()
-        self.ui.setupUi(self.window)
+        self.window = Logic()
         self.window.show()
 
         StartWindow.close()
@@ -46,9 +46,9 @@ class Ui_StartWindow(object):
         font.setWeight(50)
         self.formats_label.setFont(font)
         self.formats_label.setStyleSheet("font: 8pt \"MS UI Gothic\";\n"
-"color:rgb(139, 139, 139);")
+                                         "color:rgb(139, 139, 139);")
         self.formats_label.setObjectName("formats_label")
-        self.pushButton_2 = QtWidgets.QPushButton(parent=self.centralwidget, clicked = lambda: self.openWindow())
+        self.pushButton_2 = QtWidgets.QPushButton(parent=self.centralwidget, clicked=lambda: self.openWindow())
         self.pushButton_2.setGeometry(QtCore.QRect(195, 140, 90, 40))
         font = QtGui.QFont()
         font.setPointSize(8)
@@ -72,11 +72,12 @@ class Ui_StartWindow(object):
         self.title_label.setText(_translate("StartWindow", "Media Compression App"))
         self.formats_label.setText(_translate("StartWindow", "Only photo, video, audio files allowed*"))
         self.pushButton_2.setText(_translate("StartWindow", "Start\n"
-"Compressing"))
+                                                            "Compressing"))
 
 
 if __name__ == "__main__":
     import sys
+
     app = QtWidgets.QApplication(sys.argv)
     StartWindow = QtWidgets.QMainWindow()
     ui = Ui_StartWindow()
