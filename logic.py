@@ -15,7 +15,7 @@ class Logic(QMainWindow, Ui_MainWindow):
         self.filename = ''
 
     def getFileName(self):
-        file_filter = 'Image File (*.jpg, *.png);; Video File (*.mp4);; Audio File (*.mp3)'
+        file_filter = 'Image File (*.png, *.jpg);; Video File (*.mp4);; Audio File (*.mp3)'
         response = QFileDialog.getOpenFileName(
             parent=self,
             caption='Select a file',
@@ -23,13 +23,15 @@ class Logic(QMainWindow, Ui_MainWindow):
             filter=file_filter,
         )
         self.filename = str(response).split(',')
-        print(self.filename)
-        file_type = self.filename[0][-4:-1]
-        print(file_type)
 
     def compress(self):
-        file_type = self.filename[-1][-3:]
+        if self.filename:
+            file_type = self.filename[0][-4:-1]
 
-        image = Image.open(str(self.filename))
-        width, height = image.size
-        new_size = 0
+            if file_type == 'png' or file_type == 'jpg':
+                image = Image.open(self.filename[0][2:-1])
+                width, height = image.size
+                print(width, height)
+                new_size = 0
+        else:
+            self.label_2.setText('Upload a file')
