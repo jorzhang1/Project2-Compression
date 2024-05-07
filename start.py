@@ -7,71 +7,79 @@
 
 
 from PyQt6 import QtCore, QtGui, QtWidgets
+from extended import *
 
+class Ui_StartWindow(object):
+    def openWindow(self):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = Ui_MainWindow()
+        self.ui.setupUi(self.window)
+        self.window.show()
 
-class Ui_MainWindow(object):
-    def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(480, 320)
-        MainWindow.setMaximumSize(QtCore.QSize(480, 320))
-        self.centralwidget = QtWidgets.QWidget(parent=MainWindow)
+        StartWindow.close()
+
+    def setupUi(self, StartWindow):
+        StartWindow.setObjectName("StartWindow")
+        StartWindow.resize(480, 320)
+        StartWindow.setMaximumSize(QtCore.QSize(480, 320))
+        self.centralwidget = QtWidgets.QWidget(parent=StartWindow)
         self.centralwidget.setObjectName("centralwidget")
-        self.name = QtWidgets.QLabel(parent=self.centralwidget)
-        self.name.setGeometry(QtCore.QRect(120, 10, 240, 81))
+        self.title_label = QtWidgets.QLabel(parent=self.centralwidget)
+        self.title_label.setGeometry(QtCore.QRect(120, 10, 240, 81))
         font = QtGui.QFont()
         font.setFamily("NSimSun")
         font.setPointSize(13)
         font.setBold(False)
         font.setItalic(False)
         font.setWeight(50)
-        self.name.setFont(font)
-        self.name.setStyleSheet("font: 13pt \"NSimSun\";")
-        self.name.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
-        self.name.setObjectName("name")
-        self.file_ex = QtWidgets.QLabel(parent=self.centralwidget)
-        self.file_ex.setGeometry(QtCore.QRect(135, 70, 210, 20))
+        self.title_label.setFont(font)
+        self.title_label.setStyleSheet("font: 13pt \"NSimSun\";")
+        self.title_label.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+        self.title_label.setObjectName("title_label")
+        self.formats_label = QtWidgets.QLabel(parent=self.centralwidget)
+        self.formats_label.setGeometry(QtCore.QRect(135, 70, 210, 20))
         font = QtGui.QFont()
         font.setFamily("MS UI Gothic")
         font.setPointSize(8)
         font.setBold(False)
         font.setItalic(False)
         font.setWeight(50)
-        self.file_ex.setFont(font)
-        self.file_ex.setStyleSheet("font: 8pt \"MS UI Gothic\";\n"
+        self.formats_label.setFont(font)
+        self.formats_label.setStyleSheet("font: 8pt \"MS UI Gothic\";\n"
 "color:rgb(139, 139, 139);")
-        self.file_ex.setObjectName("file_ex")
-        self.pushButton_2 = QtWidgets.QPushButton(parent=self.centralwidget)
+        self.formats_label.setObjectName("formats_label")
+        self.pushButton_2 = QtWidgets.QPushButton(parent=self.centralwidget, clicked = lambda: self.openWindow())
         self.pushButton_2.setGeometry(QtCore.QRect(195, 140, 90, 40))
         font = QtGui.QFont()
         font.setPointSize(8)
         self.pushButton_2.setFont(font)
         self.pushButton_2.setObjectName("pushButton_2")
-        MainWindow.setCentralWidget(self.centralwidget)
-        self.menubar = QtWidgets.QMenuBar(parent=MainWindow)
+        StartWindow.setCentralWidget(self.centralwidget)
+        self.menubar = QtWidgets.QMenuBar(parent=StartWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 480, 26))
         self.menubar.setObjectName("menubar")
-        MainWindow.setMenuBar(self.menubar)
-        self.statusbar = QtWidgets.QStatusBar(parent=MainWindow)
+        StartWindow.setMenuBar(self.menubar)
+        self.statusbar = QtWidgets.QStatusBar(parent=StartWindow)
         self.statusbar.setObjectName("statusbar")
-        MainWindow.setStatusBar(self.statusbar)
+        StartWindow.setStatusBar(self.statusbar)
 
-        self.retranslateUi(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        self.retranslateUi(StartWindow)
+        QtCore.QMetaObject.connectSlotsByName(StartWindow)
 
-    def retranslateUi(self, MainWindow):
+    def retranslateUi(self, StartWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.name.setText(_translate("MainWindow", "Media Compression App"))
-        self.file_ex.setText(_translate("MainWindow", "Only photo, video, audio files allowed*"))
-        self.pushButton_2.setText(_translate("MainWindow", "Start\n"
+        StartWindow.setWindowTitle(_translate("StartWindow", "Compression App"))
+        self.title_label.setText(_translate("StartWindow", "Media Compression App"))
+        self.formats_label.setText(_translate("StartWindow", "Only photo, video, audio files allowed*"))
+        self.pushButton_2.setText(_translate("StartWindow", "Start\n"
 "Compressing"))
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
+    StartWindow = QtWidgets.QMainWindow()
+    ui = Ui_StartWindow()
+    ui.setupUi(StartWindow)
+    StartWindow.show()
     sys.exit(app.exec())
