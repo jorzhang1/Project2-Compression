@@ -3,9 +3,21 @@ from PyQt6.uic import *
 import sys
 
 from extended import *
+from start import *
 import os
 from PIL import Image
 
+class Start(QMainWindow, Ui_StartWindow):
+    def __init__(self):
+        super().__init__()
+        self.setupUi(self)
+
+        self.start_push.clicked.connect(self.changeWindow)
+
+    def changeWindow(self):
+        self.window = Logic()
+        self.window.show()
+        self.close()
 
 class Logic(QMainWindow, Ui_MainWindow):
     def __init__(self):

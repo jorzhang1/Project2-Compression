@@ -74,7 +74,7 @@ color:rgb(139, 139, 139);</string>
      <string>Only photo, video, audio files allowed*</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QPushButton" name="start_push">
     <property name="geometry">
      <rect>
       <x>195</x>

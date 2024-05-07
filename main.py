@@ -3,7 +3,7 @@ from logic import *
 
 def main():
     application = QApplication([])
-    window = Logic()
+    window = Start()
     window.show()
     application.exec()
 
