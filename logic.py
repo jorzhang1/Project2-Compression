@@ -30,7 +30,7 @@ class Logic(QMainWindow, Ui_MainWindow):
 
         self.filenames = ''
 
-        #quality
+        # quality
         self.quality = None
 
         self.width = None
@@ -89,7 +89,7 @@ class Logic(QMainWindow, Ui_MainWindow):
                 ffmpeg_cmd = f'ffmpeg -i {input_path} -c:v libx264 -c:a copy -crf 20 {output_path}'
                 subprocess.run(ffmpeg_cmd, shell=True)
 
-                #the quality in the video command is the -crf 20. The range is 0-51 where 0 is lossless, 23 is defualt,
+                # the quality in the video command is the -crf 20. The range is 0-51 where 0 is lossless, 23 is default,
                 # and 51 is the worst quality.
 
                 original_size = os.path.getsize(self.filenames[0][2:-1])
@@ -99,7 +99,20 @@ class Logic(QMainWindow, Ui_MainWindow):
                 print("Compressed Size: ", compressed_size)
 
             elif file_type == 'mp3':
-                print('whats good')
+
+                input_path = self.filenames[0][2:-1]
+                self.new_filename = str(self.new_name.text()) + '.' + str(file_type)
+                output_path = self.new_filename
+                ffmpeg_cmd = f'ffmpeg -i {input_path} -c:a libmp3lame -b:a 128k {output_path}'
+                subprocess.run(ffmpeg_cmd, shell=True)
+
+                # the quality in the audio command is the 128k. The range is typically 32 to 320 kilobits.
+
+                original_size = os.path.getsize(self.filenames[0][2:-1])
+                compressed_size = os.path.getsize(self.new_filename)
+
+                print("Original Size: ", original_size)
+                print("Compressed Size: ", compressed_size)
 
             else:
                 self.label_2.setText('Fill all options; dimensions must be numeric')
