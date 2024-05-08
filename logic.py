@@ -60,7 +60,7 @@ class Logic(QMainWindow, Ui_MainWindow):
             elif self.ninety_radio.isChecked():
                 self.quality = 90
             else:
-                self.label_2.setText('Please select any compress ratio')
+                self.label_2.setText('Please select any compression ratio')
                 self.setStyleSheet("QRadioButton::indicator:!checked { color: rgb(170, 0, 0); }")
                 return
 
@@ -86,6 +86,7 @@ class Logic(QMainWindow, Ui_MainWindow):
                     pixmap = QPixmap(self.new_filename)
                     self.label_2.setPixmap(pixmap)
                     self.label_2.setScaledContents(True)
+                    self.label_2.show()
 
             elif file_type == 'mp4':
 
@@ -153,6 +154,9 @@ class Logic(QMainWindow, Ui_MainWindow):
             self.y_value.setText('')
             self.new_name.setText('')
 
+            self.name_label.show()
+            self.new_name.show()
+
         elif file_type == 'mp4':
 
             self.ratio_label.hide()
@@ -175,6 +179,9 @@ class Logic(QMainWindow, Ui_MainWindow):
             self.y_value.setText('')
             self.new_name.setText('')
 
+            self.name_label.show()
+            self.new_name.show()
+
         elif file_type == 'mp3':
             self.ratio_label.hide()
             self.thirty_radio.hide()
@@ -196,6 +203,5 @@ class Logic(QMainWindow, Ui_MainWindow):
             self.y_value.setText('')
             self.new_name.setText('')
 
-
-
-
+            self.name_label.show()
+            self.new_name.show()
