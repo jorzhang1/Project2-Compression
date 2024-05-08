@@ -1,11 +1,11 @@
+import ffmpeg
 from PyQt6.QtWidgets import *
-from PyQt6.uic import *
-import sys
-
 from extended import *
 from start import *
 import os
+import subprocess
 from PIL import Image
+
 
 class Start(QMainWindow, Ui_StartWindow):
     def __init__(self):
@@ -18,6 +18,7 @@ class Start(QMainWindow, Ui_StartWindow):
         self.window = Logic()
         self.window.show()
         self.close()
+
 
 class Logic(QMainWindow, Ui_MainWindow):
     def __init__(self):
@@ -73,6 +74,7 @@ class Logic(QMainWindow, Ui_MainWindow):
                 new_size = (self.width, self.height)
                 resized_image = image.resize(new_size)
                 resized_image.save(self.new_filename, optimize=True, quality=self.quality)
+
                 original_size = os.path.getsize(self.filenames[0][2:-1])
                 compressed_size = os.path.getsize(self.new_filename)
 
@@ -80,14 +82,27 @@ class Logic(QMainWindow, Ui_MainWindow):
                 print("Compressed Size: ", compressed_size)
 
             elif file_type == 'mp4':
-                print("hi")
+
+                input_path = self.filenames[0][2:-1]
+                self.new_filename = str(self.new_name.text()) + '.' + str(file_type)
+                output_path = self.new_filename
+                ffmpeg_cmd = f'ffmpeg -i {input_path} -c:v libx264 -c:a copy -crf 20 {output_path}'
+                subprocess.run(ffmpeg_cmd, shell=True)
+
+                #the quality in the video command is the -crf 20. The range is 0-51 where 0 is lossless, 23 is defualt,
+                # and 51 is the worst quality.
+
+                original_size = os.path.getsize(self.filenames[0][2:-1])
+                compressed_size = os.path.getsize(self.new_filename)
+
+                print("Original Size: ", original_size)
+                print("Compressed Size: ", compressed_size)
 
             elif file_type == 'mp3':
                 print('whats good')
 
             else:
                 self.label_2.setText('Fill all options; dimensions must be numeric')
-
 
         else:
             self.label_2.setText('Upload a file')
