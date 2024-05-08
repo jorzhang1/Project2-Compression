@@ -1,4 +1,4 @@
 Todo
-1. fasdf
-2. 3
+1. preview file after compression
+2. 
 3. 

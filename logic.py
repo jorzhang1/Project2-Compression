@@ -1,5 +1,6 @@
-import ffmpeg
 from PyQt6.QtWidgets import *
+from PyQt6.uic import *
+from PyQt6.QtGui import QPixmap
 from extended import *
 from start import *
 import os
@@ -66,20 +67,27 @@ class Logic(QMainWindow, Ui_MainWindow):
                 return
 
             if (file_type == 'png' or file_type == 'jpg') and (self.x_value.text().isdigit()
-                                                               and self.y_value.text().isdigit()):
+                                                               and int(self.x_value.text()) > 0
+                                                               and self.y_value.text().isdigit()
+                                                               and int(self.x_value.text()) > 0):
                 self.width = int(self.x_value.text())
                 self.height = int(self.y_value.text())
-                self.new_filename = str(self.new_name.text()) + '.' + str(file_type)
-                image = Image.open(self.filenames[0][2:-1])
-                new_size = (self.width, self.height)
-                resized_image = image.resize(new_size)
-                resized_image.save(self.new_filename, optimize=True, quality=self.quality)
+                if self.width < 3840 and self.height < 2160:
+                    self.new_filename = str(self.new_name.text()) + '.' + str(file_type)
+                    image = Image.open(self.filenames[0][2:-1])
+                    new_size = (self.width, self.height)
+                    resized_image = image.resize(new_size)
+                    resized_image.save(self.new_filename, optimize=True, quality=self.quality)
 
-                original_size = os.path.getsize(self.filenames[0][2:-1])
-                compressed_size = os.path.getsize(self.new_filename)
+                    original_size = os.path.getsize(self.filenames[0][2:-1])
+                    compressed_size = os.path.getsize(self.new_filename)
 
-                print("Original Size: ", original_size)
-                print("Compressed Size: ", compressed_size)
+                    print("Original Size: ", original_size)
+                    print("Compressed Size: ", compressed_size)
+
+                    pixmap = QPixmap(self.new_filename)
+                    self.label_2.setPixmap(pixmap)
+                    self.label_2.setScaledContents(True)
 
             elif file_type == 'mp4':
 

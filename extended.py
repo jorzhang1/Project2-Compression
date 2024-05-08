@@ -120,7 +120,7 @@ class Ui_MainWindow(object):
         self.dimension_label.setText(_translate("MainWindow", "New dimension:"))
         self.x_label.setText(_translate("MainWindow", "x:"))
         self.y_label.setText(_translate("MainWindow", "y:"))
-        self.name_label.setText(_translate("MainWindow", "File name:"))
+        self.name_label.setText(_translate("MainWindow", "New File Name:"))
 
 
 if __name__ == "__main__":
