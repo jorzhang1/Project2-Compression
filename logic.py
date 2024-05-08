@@ -134,64 +134,68 @@ class Logic(QMainWindow, Ui_MainWindow):
         file_type = self.filenames[0][-4:-1]
         if file_type == 'jpg' or file_type == 'png':
 
-            self.ratio_label.setEnabled(True)
-            self.thirty_radio.setEnabled(True)
-            self.fifty_radio.setEnabled(True)
-            self.seventy_radio.setEnabled(True)
-            self.ninety_radio.setEnabled(True)
+            self.ratio_label.show()
+            self.thirty_radio.show()
+            self.fifty_radio.show()
+            self.seventy_radio.show()
+            self.ninety_radio.show()
 
-            self.dimension_label.setEnabled(True)
+            self.dimension_label.show()
             self.dimension_label.setText('New dimensions (Max 3840x2160')
-            self.x_label.setEnabled(True)
-            self.y_label.setEnabled(True)
-            self.x_value.setEnabled(True)
-            self.y_value.setEnabled(True)
+            self.x_label.show()
+            self.y_label.show()
+            self.x_label.setText('x:')
+            self.y_label.setText('y:')
+            self.x_value.show()
+            self.y_value.show()
 
-            self.name_label.setText('')
             self.x_value.setText('')
             self.y_value.setText('')
+            self.new_name.setText('')
 
         elif file_type == 'mp4':
 
-            self.ratio_label.setEnabled(False)
-            self.thirty_radio.setEnabled(False)
-            self.fifty_radio.setEnabled(False)
-            self.seventy_radio.setEnabled(False)
-            self.ninety_radio.setEnabled(False)
+            self.ratio_label.hide()
+            self.thirty_radio.hide()
+            self.fifty_radio.hide()
+            self.seventy_radio.hide()
+            self.ninety_radio.hide()
 
-            self.dimension_label.setEnabled(True)
+            self.dimension_label.show()
             self.dimension_label.setText('Bit rate (0-51)')
 
             self.x_label.setText('')
-            self.x_value.setEnabled(True)
+            self.x_value.show()
 
-            self.y_label.setEnabled(False)
-            self.y_value.setEnabled(False)
+            self.y_label.hide()
+            self.y_value.hide()
             self.y_label.setText('')
 
-            self.name_label.setText('')
             self.x_value.setText('')
             self.y_value.setText('')
+            self.new_name.setText('')
 
         elif file_type == 'mp3':
-            self.ratio_label.setEnabled(False)
-            self.thirty_radio.setEnabled(False)
-            self.fifty_radio.setEnabled(False)
-            self.seventy_radio.setEnabled(False)
-            self.ninety_radio.setEnabled(False)
+            self.ratio_label.hide()
+            self.thirty_radio.hide()
+            self.fifty_radio.hide()
+            self.seventy_radio.hide()
+            self.ninety_radio.hide()
 
-            self.dimension_label.setEnabled(True)
+            self.dimension_label.show()
             self.dimension_label.setText('Bit rate (32-320)')
 
-            self.x_label.setText('Kilobits')
-            self.x_value.setEnabled(True)
+            self.x_label.setText('Kilobits:')
+            self.x_value.show()
 
-            self.y_label.setEnabled(False)
-            self.y_value.setEnabled(False)
+            self.y_label.hide()
+            self.y_value.hide()
             self.y_label.setText('')
 
-            self.name_label.setText('')
             self.x_value.setText('')
             self.y_value.setText('')
+            self.new_name.setText('')
+
+
 
 
