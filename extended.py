@@ -17,7 +17,7 @@ class Ui_MainWindow(object):
         self.centralwidget = QtWidgets.QWidget(parent=MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.title = QtWidgets.QLabel(parent=self.centralwidget)
-        self.title.setGeometry(QtCore.QRect(270, 20, 240, 40))
+        self.title.setGeometry(QtCore.QRect(300, 20, 240, 40))
         font = QtGui.QFont()
         font.setFamily("NSimSun")
         font.setPointSize(18)

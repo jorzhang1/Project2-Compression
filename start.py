@@ -62,6 +62,7 @@ class Ui_StartWindow(object):
         StartWindow.setWindowTitle(_translate("StartWindow", "Compression App"))
         self.title_label.setText(_translate("StartWindow", "Media Compression App"))
         self.formats_label.setText(_translate("StartWindow", "Only photo, video, audio files allowed*"))
+        self.formats_label.setGeometry(QtCore.QRect(160, 70, 210, 20))
         self.start_push.setText(_translate("StartWindow", "Start\n"
 "Compressing"))
 
