@@ -12,6 +12,7 @@ class Start(QMainWindow, Ui_StartWindow):
     Class that builds the start window
     and contains a method to switch windows
     """
+
     def __init__(self) -> None:
         """
         Method that sets up the ui when the program is run
@@ -36,6 +37,7 @@ class Logic(QMainWindow, Ui_MainWindow):
     Class that builds the main window
     and contains methods that can compress media files
     """
+
     def __init__(self) -> None:
         """
         Method that sets up ui when the program is run
@@ -75,10 +77,11 @@ class Logic(QMainWindow, Ui_MainWindow):
         if self.filenames:
             file_type: str = self.filenames[0][-4:-1]
 
-            if (file_type == 'png' or file_type == 'jpg') and (self.x_value.text().isdigit()
-                                                               and int(self.x_value.text()) > 0
-                                                               and self.y_value.text().isdigit()
-                                                               and int(self.x_value.text()) > 0):
+            if ((file_type == 'png' or file_type == 'jpg') and (self.x_value.text().isdigit()
+                                                                and int(self.x_value.text()) > 0
+                                                                and self.y_value.text().isdigit()
+                                                                and int(self.x_value.text()) > 0)
+                    and self.new_filename != ''):
                 if self.thirty_radio.isChecked():
                     self.quality = 30
                 elif self.fifty_radio.isChecked():
