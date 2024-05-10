@@ -54,7 +54,7 @@ class Logic(QMainWindow, Ui_MainWindow):
         self.width = None
         self.height = None
 
-        self.new_filename: str = ''
+        self.new_filename = None
 
     def getFileName(self) -> None:
         """
@@ -77,11 +77,11 @@ class Logic(QMainWindow, Ui_MainWindow):
         if self.filenames:
             file_type: str = self.filenames[0][-4:-1]
 
-            if ((file_type == 'png' or file_type == 'jpg') and (self.x_value.text().isdigit()
-                                                                and int(self.x_value.text()) > 0
-                                                                and self.y_value.text().isdigit()
-                                                                and int(self.x_value.text()) > 0)
-                    and self.new_filename != ''):
+            if (((file_type == 'png' or file_type == 'jpg') and (self.x_value.text().isdigit()
+                                                                 and int(self.x_value.text()) > 0
+                                                                 and self.y_value.text().isdigit()
+                                                                 and int(self.y_value.text()) > 0))
+                    and self.new_name.text() != ''):
                 if self.thirty_radio.isChecked():
                     self.quality = 30
                 elif self.fifty_radio.isChecked():
